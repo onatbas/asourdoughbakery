@@ -1,0 +1,16 @@
+{
+  "businessName": "A's Sourdough Bakery",
+  "email": "aydan.bas@outlook.com",
+  "street": "1522 Pittston Rd.",
+  "city": "Spencerville, K0E 1X0",
+  "productName": "Chocolate Chip Cookies (12pc)",
+  "netQuantity": "300gr",
+  "ingredients": "Organic flour, chocolate chips, unsalted butter, brown sugar, sourdough starter, granulated sugar, egg yolks, baking soda, baking powder, salt",
+  "allergens": "Wheat, Milk, Eggs",
+  "freshForDays": 14,
+  "storage": "Store in an airtight container at room temperature.",
+  "instagram": "@as_sourdoughbakery",
+  "facebook": "facebook.com/A's Sourdough Bakery",
+  "note1": "Made with organic, unbleached flour",
+  "note2": "Prepared by A's Sourdough Bakery, Spencerville, Ontario"
+}

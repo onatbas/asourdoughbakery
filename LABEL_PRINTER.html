@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>4x6 Food Label Generator</title>
+
+  <style>
+    @page {
+      size: 4in 6in;
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+    }
+
+    .editor {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #logoBox {
+      padding-top: 20px;
+    }
+
+    .form-section {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 13px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 10px 18px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .preview-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .label {
+      width: 4in;
+      height: 6in;
+      box-sizing: border-box;
+      padding: 0.25in;
+      background: white;
+      border: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      line-height: 1.3;
+      position: relative;
+    }
+
+    .logo-area {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      width: 1.2in;
+      height: 1.2in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: grayscale(100%) contrast(1.5);
+    }
+
+    .header {
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .business-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .business-details {
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .product-name {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      margin: 4px 0;
+      padding: 0;
+    }
+
+    .section {
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .label-title {
+      font-weight: bold;
+    }
+
+    .ingredients {
+      font-size: 11px;
+      text-align: left;
+    }
+
+    .allergens {
+      border: 2px solid #000;
+      padding: 8px;
+      font-weight: bold;
+      font-size: 12px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .footer {
+      margin-top: auto;
+      border-top: 2px solid #000;
+      padding-top: 10px;
+      text-align: center;
+    }
+
+    .note1 {
+      text-align: center;
+      font-size: 13px;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+
+    .small {
+      font-size: 10px;
+      color: #444;
+      text-align: center;
+    }
+
+    .bottomleft {
+      font-style: italic;
+      font-size: 12px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 10px;
+    }
+
+    .social-top-left,
+    .social-top-right {
+      position: absolute;
+      top: 8px;
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .social-top-left {
+      left: 8px;
+    }
+
+    .social-top-right {
+      right: 8px;
+    }
+
+    .social-icon {
+      width: 26px;
+      height: 26px;
+      vertical-align: middle;
+      filter: grayscale(100%) contrast(1.5);
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .editor,
+      .form-section {
+        display: none !important;
+      }
+
+      .preview-wrapper {
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .label {
+        border: none;
+        width: 4in;
+        height: 6in;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="editor">
+    <div class="form-section">
+
+      <h2>Food Label Information</h2>
+
+      <div class="form-grid">
+
+        <div class="full">
+          <label>Upload Logo</label>
+          <input type="file" id="logoUpload" accept="image/*">
+        </div>
+
+        <div>
+          <label>Business Name</label>
+          <input id="businessName" value="A's Sourdough Bread">
+        </div>
+
+        <div>
+          <label>Email</label>
+          <input id="email" value="order@asourdoughbakery.com">
+        </div>
+
+        <div>
+          <label>Street Address</label>
+          <input id="street" value="123 Main Street">
+        </div>
+
+        <div>
+          <label>City / Province / Postal</label>
+          <input id="city" value="Prescott, ON K0E 1T0">
+        </div>
+
+        <div>
+          <label>Product Name</label>
+          <input id="productName" value="Sourdough Bread">
+        </div>
+
+        <div>
+          <label>Title Font Size (px)</label>
+          <input type="number" id="titleFontSize" value="22" min="10" max="40">
+        </div>
+
+        <div>
+          <label>Net Quantity</label>
+          <input id="netQuantity" value="700 g">
+        </div>
+
+        <div class="full">
+          <label>Ingredients</label>
+          <textarea id="ingredients">Organic flour, water, salt, sourdough starter.</textarea>
+        </div>
+
+        <div class="full">
+          <label>Allergens</label>
+          <input id="allergens" value="Wheat">
+        </div>
+
+        <div>
+          <label>Fresh For (days)</label>
+          <input type="number" id="freshForDays" value="5" min="1" max="90">
+        </div>
+
+        <div>
+          <label>Storage Instructions</label>
+          <input id="storage" value="Store in a cool, dry place.">
+        </div>
+
+        <div>
+          <label>Instagram</label>
+          <input id="instagram" value="@yourinstagram">
+        </div>
+
+        <div>
+          <label>Facebook</label>
+          <input id="facebook" value="facebook.com/yourpage">
+        </div>
+
+        <div class="full">
+          <label>Note 1</label>
+          <input id="note1" value="Freshly baked in small batches">
+        </div>
+
+        <div class="full">
+          <label>Note 2</label>
+          <input id="note2" value="Prepared by A's Sourdough Bread, Prescott, Ontario">
+        </div>
+
+      </div>
+
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button onclick="exportJSON()">Export JSON</button>
+        <button onclick="document.getElementById('jsonImport').click()">Import JSON</button>
+        <input type="file" id="jsonImport" accept=".json" style="display:none">
+        <button onclick="window.print()">Print Label</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="preview-wrapper">
+
+    <div class="label">
+
+      <div class="social-top-left">
+        <img src="instagram.png" alt="" class="social-icon">
+        <span data-fill="instagram"></span>
+      </div>
+
+      <div class="social-top-right">
+        <span data-fill="facebook"></span>
+        <img src="facebook.png" alt="" class="social-icon">
+      </div>
+
+      <div class="logo-area">
+        <div class="logo" id="logoBox">
+          <img src="LOGO_CROPPED.png" alt="Logo">
+        </div>
+      </div>
+
+      <div class="header">
+        <div class="business-name" data-fill="businessName"></div>
+        <div class="business-details">
+          <div data-fill="street"></div>
+          <div data-fill="city"></div>
+          <div data-fill="email"></div>
+          <div>asourdoughbakery.com</div>
+        </div>
+      </div>
+
+      <div class="product-name" data-fill="productName"></div>
+
+      <div class="section">
+        <span class="label-title">Net Quantity:</span>
+        <span data-fill="netQuantity"></span>
+      </div>
+
+      <div class="section ingredients">
+        <span class="label-title">Ingredients:</span>
+        <span data-fill="ingredients"></span>
+      </div>
+
+      <div class="allergens">
+        Contains: <span data-fill="allergens"></span>
+      </div>
+
+      <div class="section">
+        <span class="label-title">Best Before:</span>
+        <span data-fill="bestBefore"></span>
+      </div>
+
+      <div class="section">
+        <span class="label-title">Storage:</span>
+        <span data-fill="storage"></span>
+      </div>
+
+
+
+        <div class="bottomleft" data-fill="note1"></div>
+
+      <div class="footer">
+
+
+
+        <div class="small" data-fill="note2"></div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const fields = [
+      "businessName",
+      "email",
+      "street",
+      "city",
+      "productName",
+      "netQuantity",
+      "ingredients",
+      "allergens",
+      "storage",
+      "instagram",
+      "facebook",
+      "note1",
+      "note2"
+    ];
+
+    function computeBestBefore() {
+      const days = parseInt(document.getElementById("freshForDays").value) || 0;
+      const date = new Date();
+      date.setDate(date.getDate() + days);
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const dd = String(date.getDate()).padStart(2, '0');
+      const formatted = yyyy + '-' + mm + '-' + dd;
+      document.querySelectorAll('[data-fill="bestBefore"]').forEach(el => {
+        el.textContent = formatted;
+      });
+    }
+
+    function updateLabel() {
+      fields.forEach(field => {
+        const input = document.getElementById(field);
+        if (!input) return;
+        const targets = document.querySelectorAll(`[data-fill="${field}"]`);
+
+        targets.forEach(target => {
+          target.textContent = input.value;
+        });
+      });
+    }
+
+    fields.forEach(field => {
+      document
+        .getElementById(field)
+        .addEventListener("input", updateLabel);
+    });
+
+    updateLabel();
+    computeBestBefore();
+
+    document.getElementById("freshForDays").addEventListener("input", computeBestBefore);
+
+    const titleFontSizeInput = document.getElementById("titleFontSize");
+    const productNameEl = document.querySelector(".product-name");
+
+    titleFontSizeInput.addEventListener("input", function () {
+      productNameEl.style.fontSize = this.value + "px";
+    });
+
+    document.getElementById("logoUpload").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        const logoBox = document.getElementById("logoBox");
+        logoBox.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = evt.target.result;
+        logoBox.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function exportJSON() {
+      const data = {};
+      fields.forEach(field => {
+        const el = document.getElementById(field);
+        data[field] = el.value;
+      });
+      data.titleFontSize = titleFontSizeInput.value;
+      data.freshForDays = document.getElementById("freshForDays").value;
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      const name = (data.productName || "label").replace(/\s+/g, "_");
+      a.download = name + ".json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("jsonImport").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        try {
+          const data = JSON.parse(evt.target.result);
+          fields.forEach(field => {
+            if (data[field] !== undefined) {
+              const el = document.getElementById(field);
+              el.value = data[field];
+            }
+          });
+          if (data.titleFontSize !== undefined) {
+            titleFontSizeInput.value = data.titleFontSize;
+            productNameEl.style.fontSize = data.titleFontSize + "px";
+          }
+          if (data.freshForDays !== undefined) {
+            document.getElementById("freshForDays").value = data.freshForDays;
+          }
+          updateLabel();
+          computeBestBefore();
+        } catch (err) {
+          alert("Invalid JSON file.");
+        }
+      };
+      reader.readAsText(file);
+      this.value = "";
+    });
+  </script>
+
+</body>
+</html>

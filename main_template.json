@@ -1,0 +1,16 @@
+{
+  "businessName": "A's Sourdough Bakery",
+  "email": "aydan.bas@outlook.com",
+  "street": "1522 Pittston Rd.",
+  "city": "Spencerville, K0E 1X0",
+  "productName": "Sourdough Bread",
+  "netQuantity": "700 g",
+  "ingredients": "Organic flour, water, salt, sourdough starter.",
+  "allergens": "Wheat",
+  "freshForDays": 5,
+  "storage": "Store in a cool, dry place.",
+  "instagram": "@as_sourdoughbakery",
+  "facebook": "facebook.com/A’s Sourdough Bakery",
+  "note1": "Made with organic, unbleached flour",
+  "note2": "Prepared by A's Sourdough Bakery, Spencerville, Ontario"
+}

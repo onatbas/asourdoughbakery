@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Recipe Builder</title>
+
+  <style>
+    @page {
+      size: 4in 6in;
+      margin: 5mm;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #f3f3f3;
+    }
+
+    .editor {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .form-section {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      font-family: Arial, sans-serif;
+    }
+
+    .form-section h2 {
+      margin-top: 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 13px;
+      display: block;
+      margin-bottom: 4px;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea, input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 10px 18px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+
+    .preview-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .recipe {
+      width: 4in;
+      min-height: 6in;
+      background: white;
+      padding: 5mm;
+      box-sizing: border-box;
+      font-size: 10px;
+      line-height: 1.2;
+    }
+
+    .recipe-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 2px;
+      text-align: center;
+    }
+
+    .recipe-subtitle {
+      font-size: 10px;
+      font-style: italic;
+      text-align: center;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .recipe-image {
+      display: block;
+      width: 60%;
+      margin: 0 auto 20px;
+      filter: grayscale(100%) contrast(1.3);
+    }
+
+    .recipe h2 {
+      font-size: 12px;
+      margin: 10px 0 4px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 2px;
+    }
+
+    .recipe ul, .recipe ol {
+      margin: 0 0 6px 14px;
+      padding: 0;
+    }
+
+    .recipe li {
+      margin-bottom: 1px;
+    }
+
+    .recipe p {
+      margin: 4px 0;
+    }
+
+    .recipe .tip {
+      background: #f9f9f9;
+      border-left: 2px solid #333;
+      padding: 4px 8px;
+      margin: 8px 0;
+      font-style: italic;
+      font-size: 9px;
+    }
+
+    .recipe-footer {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 8px;
+      color: #999;
+      font-style: italic;
+    }
+
+    @media print {
+      .editor { display: none; }
+      .preview-wrapper { padding: 0; margin: 0; display: block; }
+      .recipe { width: 100%; min-height: auto; padding: 0; font-size: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="editor">
+    <div class="form-section">
+      <h2>Recipe Builder</h2>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button onclick="window.print()">Print Recipe</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-wrapper">
+    <div class="recipe">
+
+      <div class="recipe-title">Sourdough Pizza</div>
+      <div class="recipe-subtitle">Using A's Sourdough Bakery Pizza Crust</div>
+
+      <h2>What You Need</h2>
+      <ul>
+        <li>1 A's Sourdough Pizza Crust (850g)</li>
+        <li>Pizza sauce (store-bought or homemade — recipe below)</li>
+        <li>Mozzarella cheese, shredded (as much as you like)</li>
+        <li>Toppings of your choice</li>
+      </ul>
+
+      <h2>Directions</h2>
+      <ol>
+        <li>Preheat your oven to 380–400°F.</li>
+        <li>Place the pizza crust on a baking sheet or pizza stone.</li>
+        <li>Spread a generous layer of pizza sauce over the crust.</li>
+        <li>Add shredded mozzarella (and any other cheese you love).</li>
+        <li>Add your favorite toppings.</li>
+        <li>Bake for 8–10 minutes, until the cheese is melted and bubbly.</li>
+        <li>Slice and enjoy!</li>
+      </ol>
+
+      <div class="tip">
+        <strong>A's favorite:</strong> Just cheese — a generous layer of mozzarella — with a few slices of jalapeño, then top with a big mound of fresh arugula right out of the oven. Nothing else needed!
+      </div>
+
+      <h2>Homemade Pizza Sauce</h2>
+      <p><em>Makes enough for 2–3 pizzas</em></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 10px;">
+        <ul>
+          <li>1 can (398ml) crushed tomatoes</li>
+          <li>2 cloves garlic, minced</li>
+          <li>1 tbsp olive oil</li>
+          <li>1 tsp dried oregano</li>
+          <li>1 tsp dried basil</li>
+          <li>½ tsp salt</li>
+          <li>Pinch of sugar</li>
+        </ul>
+        <ol>
+          <li>Heat olive oil over medium heat.</li>
+          <li>Add garlic, cook 30 seconds.</li>
+          <li>Add tomatoes, oregano, basil, salt, sugar.</li>
+          <li>Simmer 15–20 min, stir occasionally.</li>
+          <li>Cool before spreading.</li>
+        </ol>
+      </div>
+
+      <div class="recipe-footer">
+        A's Sourdough Bakery — Spencerville, Ontario<br>
+        @as_sourdoughbakery
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  </script>
+
+</body>
+</html>

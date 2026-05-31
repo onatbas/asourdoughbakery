@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A's Sourdough Bakery | Spencerville, Ontario</title>
+  <link rel="icon" href="logo.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: #222;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 2px solid #222;
+    }
+
+    header img.logo {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    header p.tagline {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    nav {
+      text-align: center;
+      padding: 16px 20px;
+      background: #222;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 18px;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #e0ddd8;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .product-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .product-card p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .product-card .weight {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .about {
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      font-size: 1.05rem;
+      color: #444;
+    }
+
+    .gallery {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .gallery a {
+      display: block;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #222;
+      font-size: 0.95rem;
+    }
+
+    .socials img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .socials a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 2px solid #222;
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+      nav a { margin: 0 10px; font-size: 0.85rem; }
+      section { padding: 40px 16px; }
+      .socials { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="background:#222;color:#fff;text-align:center;padding:10px 20px;font-size:0.85rem;letter-spacing:0.5px;font-weight:500;">
+    &#127838; Now at the <a href="https://www.prescott.ca/explore/explore/prescott-farmers-crafters-market/" style="color:#fff;text-decoration:underline;"><strong>Prescott Farmer's &amp; Crafter's Market</strong></a> &mdash; Every Saturday, 9 AM&ndash;2 PM @ 191 Water Street East, Prescott &#127838;
+  </div>
+
+  <header>
+    <img src="logo.png" alt="A's Sourdough Bakery" class="logo">
+    <h1>A's Sourdough Bakery</h1>
+    <p class="tagline">Handcrafted with love in Spencerville, Ontario</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="recipe.html">Recipes</a>
+  </nav>
+
+  <div class="gallery">
+    <a href="bread.jpg" target="_blank"><img src="bread.jpg" alt="Fresh bread"></a>
+    <a href="cookies.jpg" target="_blank"><img src="cookies.jpg" alt="Cookies"></a>
+    <a href="pizza.jpg" target="_blank"><img src="pizza.jpg" alt="Pizza"></a>
+    <a href="pizzafocaccia.JPG" target="_blank"><img src="pizzafocaccia.JPG" alt="Pizza focaccia"></a>
+    <a href="stand.JPG" target="_blank"><img src="stand.JPG" alt="Market stand"></a>
+  </div>
+
+  <section style="text-align:center;">
+    <p style="margin-top:20px;">
+      <img src="preorder.png" alt="Preorder Anytime" style="width:100%;max-width:350px;border-radius:8px;filter:grayscale(100%) contrast(1.5);">
+    </p>
+    <a href="menu.html">
+      <img src="full-menu.png" alt="Our Full Menu" style="width:100%;max-width:600px;border-radius:8px;">
+    </a>
+
+  </section>
+
+  <section id="about" class="about">
+    <h2>About</h2>
+    <p>Everything we bake is made with organic, unbleached flour and our own sourdough starter. No preservatives, no shortcuts &mdash; just real bread the way it should be.</p>
+    <p>We bake in small batches from our home kitchen in Spencerville, Ontario, and sell at local markets and by order.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Find Us</h2>
+    <p>Pittston Road, Spencerville, ON K0E 1X0</p>
+    <p><script type="text/javascript">function decode(a){a=atob(a);return a.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26)})};document.write("<a href=\""+decode("em52eWdiOnZhc2JAbmZiaGVxYmh0dW9ueHJlbC5wYno=")+"\">"+decode("dmFzYkBuZmJoZXFiaHR1b254cmVsLnBieg==")+"</a>");</script></p>
+
+    <div class="socials">
+      <a href="https://instagram.com/as_sourdoughbakery">
+        <img src="instagram.png" alt="Instagram"> @as_sourdoughbakery
+      </a>
+      <a href="https://facebook.com/A's Sourdough Bakery">
+        <img src="facebook.png" alt="Facebook"> A's Sourdough Bakery
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 A's Sourdough Bakery &middot; asourdoughbakery.com
+  </footer>
+
+</body>
+</html>

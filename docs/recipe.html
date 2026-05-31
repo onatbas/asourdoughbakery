@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sourdough Pizza Recipe | A's Sourdough Bakery</title>
+  <link rel="icon" href="logo.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: #222;
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      border-bottom: 2px solid #222;
+    }
+
+    header img.logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    header a {
+      color: #222;
+      text-decoration: none;
+      border-bottom: 1px solid #999;
+    }
+
+    nav {
+      text-align: center;
+      padding: 14px 20px;
+      background: #222;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 18px;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    .recipe-page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .recipe-page h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .recipe-page .subtitle {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+
+    .recipe-page img {
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      margin: 0 auto 40px;
+      border-radius: 6px;
+    }
+
+    .recipe-page h2 {
+      font-size: 1.3rem;
+      margin: 30px 0 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .recipe-page ul,
+    .recipe-page ol {
+      margin-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    .recipe-page li {
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .recipe-page p {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .tip {
+      background: #f9f9f7;
+      border-left: 3px solid #222;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+
+    .sauce-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 30px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 2px solid #222;
+      margin-top: 50px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      .sauce-grid { grid-template-columns: 1fr; }
+      .recipe-page { padding: 30px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html"><img src="logo.png" alt="A's Sourdough Bakery" class="logo"></a>
+    <h1>A's Sourdough Bakery</h1>
+    <p><a href="index.html">&larr; Back to Home</a></p>
+  </header>
+
+  <nav>
+    <a href="index.html#products">Products</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="recipe.html">Recipes</a>
+  </nav>
+
+  <div class="recipe-page">
+
+    <h1>Sourdough Pizza</h1>
+    <p class="subtitle">Using A's Sourdough Bakery Pizza Crust</p>
+
+    <img src="pizza.jpg" alt="Sourdough pizza fresh from the oven">
+
+    <h2>What You Need</h2>
+    <ul>
+      <li>1 A's Sourdough Pizza Crust (850g)</li>
+      <li>Pizza sauce (store-bought or homemade &mdash; recipe below)</li>
+      <li>Mozzarella cheese, shredded (as much as you like)</li>
+      <li>Toppings of your choice</li>
+    </ul>
+
+    <h2>Directions</h2>
+    <ol>
+      <li>Preheat your oven to 380&ndash;400&deg;F.</li>
+      <li>Place the pizza crust on a baking sheet or pizza stone.</li>
+      <li>Spread a generous layer of pizza sauce over the crust.</li>
+      <li>Add shredded mozzarella (and any other cheese you love).</li>
+      <li>Add your favorite toppings.</li>
+      <li>Bake for 8&ndash;10 minutes, until the cheese is melted and bubbly.</li>
+      <li>Slice and enjoy!</li>
+    </ol>
+
+    <div class="tip">
+      <strong>A's favorite:</strong> Just cheese &mdash; a generous layer of mozzarella &mdash; with a few slices of jalape&ntilde;o, then top with a big mound of fresh arugula right out of the oven. Nothing else needed!
+    </div>
+
+    <h2>Homemade Pizza Sauce</h2>
+    <p><em>Makes enough for 2&ndash;3 pizzas</em></p>
+
+    <div class="sauce-grid">
+      <div>
+        <ul>
+          <li>1 can (398ml) crushed tomatoes</li>
+          <li>2 cloves garlic, minced</li>
+          <li>1 tbsp olive oil</li>
+          <li>1 tsp dried oregano</li>
+          <li>1 tsp dried basil</li>
+          <li>&frac12; tsp salt</li>
+          <li>Pinch of sugar</li>
+        </ul>
+      </div>
+      <div>
+        <ol>
+          <li>Heat olive oil over medium heat.</li>
+          <li>Add garlic, cook 30 seconds.</li>
+          <li>Add tomatoes, oregano, basil, salt, sugar.</li>
+          <li>Simmer 15&ndash;20 min, stir occasionally.</li>
+          <li>Cool before spreading.</li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 A's Sourdough Bakery &middot; asourdoughbakery.com
+  </footer>
+
+</body>
+</html>
