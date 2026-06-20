@@ -22,8 +22,9 @@
     }
 
     header img.logo {
-      width: 140px;
-      height: 140px;
+      width: 320px;
+      max-width: 80%;
+      height: auto;
       object-fit: contain;
       margin-bottom: 20px;
     }
@@ -60,7 +61,7 @@
     section {
       max-width: 900px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 20px;
     }
 
     section h2 {
@@ -112,37 +113,39 @@
     }
 
     .gallery {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
+      width: 100%;
+      overflow: hidden;
+      padding: 20px 0;
     }
 
-    .gallery a {
+    .gallery-track {
+      display: flex;
+      gap: 10px;
+      animation: scroll-gallery 40s linear infinite;
+    }
+
+    .gallery-track a {
       display: block;
-      aspect-ratio: 1;
+      flex-shrink: 0;
+      width: 160px;
+      height: 160px;
       overflow: hidden;
       border-radius: 4px;
     }
 
-    .gallery img {
+    .gallery-track img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.2s;
-      cursor: pointer;
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
+    .gallery:hover .gallery-track {
+      animation-play-state: paused;
     }
 
-    @media (max-width: 600px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
+    @keyframes scroll-gallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .contact {
@@ -188,6 +191,60 @@
       color: #777;
     }
 
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      color: #fff;
+      font-size: 2.2rem;
+      cursor: pointer;
+      font-family: sans-serif;
+      line-height: 1;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      font-family: sans-serif;
+      padding: 10px 18px;
+      user-select: none;
+    }
+
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover,
+    .lightbox-close:hover {
+      color: #ccc;
+    }
+
     @media (max-width: 600px) {
       header h1 { font-size: 1.6rem; }
       nav a { margin: 0 10px; font-size: 0.85rem; }
@@ -204,7 +261,6 @@
 
   <header>
     <img src="logo.png" alt="A's Sourdough Bakery" class="logo">
-    <h1>A's Sourdough Bakery</h1>
     <p class="tagline">Handcrafted with love in Spencerville, Ontario</p>
   </header>
 
@@ -217,20 +273,38 @@
   </nav>
 
   <div class="gallery">
-    <a href="bread.jpg" target="_blank"><img src="bread.jpg" alt="Fresh bread"></a>
-    <a href="cookies.jpg" target="_blank"><img src="cookies.jpg" alt="Cookies"></a>
-    <a href="pizza.jpg" target="_blank"><img src="pizza.jpg" alt="Pizza"></a>
-    <a href="pizzafocaccia.JPG" target="_blank"><img src="pizzafocaccia.JPG" alt="Pizza focaccia"></a>
-    <a href="stand.JPG" target="_blank"><img src="stand.JPG" alt="Market stand"></a>
+    <div class="gallery-track">
+      <a href="#" onclick="openLightbox(0);return false"><img src="maplepecan.jpg" alt="Maple pecan sourdough crumb"></a>
+      <a href="#" onclick="openLightbox(1);return false"><img src="fullloaf.jpg" alt="Full sourdough loaf"></a>
+      <a href="#" onclick="openLightbox(2);return false"><img src="bread.jpg" alt="Fresh bread"></a>
+      <a href="#" onclick="openLightbox(3);return false"><img src="cookies.jpg" alt="Cookies"></a>
+      <a href="#" onclick="openLightbox(4);return false"><img src="pizza.jpg" alt="Pizza"></a>
+      <a href="#" onclick="openLightbox(5);return false"><img src="pizzafocaccia.JPG" alt="Pizza focaccia"></a>
+      <a href="#" onclick="openLightbox(6);return false"><img src="stand.JPG" alt="Market stand"></a>
+      <a href="#" onclick="openLightbox(7);return false"><img src="focaccia.jpg" alt="Rosemary focaccia"></a>
+      <a href="#" onclick="openLightbox(0);return false"><img src="maplepecan.jpg" alt="Maple pecan sourdough crumb"></a>
+      <a href="#" onclick="openLightbox(1);return false"><img src="fullloaf.jpg" alt="Full sourdough loaf"></a>
+      <a href="#" onclick="openLightbox(2);return false"><img src="bread.jpg" alt="Fresh bread"></a>
+      <a href="#" onclick="openLightbox(3);return false"><img src="cookies.jpg" alt="Cookies"></a>
+      <a href="#" onclick="openLightbox(4);return false"><img src="pizza.jpg" alt="Pizza"></a>
+      <a href="#" onclick="openLightbox(5);return false"><img src="pizzafocaccia.JPG" alt="Pizza focaccia"></a>
+      <a href="#" onclick="openLightbox(6);return false"><img src="stand.JPG" alt="Market stand"></a>
+      <a href="#" onclick="openLightbox(7);return false"><img src="focaccia.jpg" alt="Rosemary focaccia"></a>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <span class="lightbox-prev" onclick="navLightbox(-1)">&#8249;</span>
+    <img id="lightbox-img" src="" alt="">
+    <span class="lightbox-next" onclick="navLightbox(1)">&#8250;</span>
   </div>
 
   <section style="text-align:center;">
     <p style="margin-top:20px;">
       <img src="preorder.png" alt="Preorder Anytime" style="width:100%;max-width:350px;border-radius:8px;filter:grayscale(100%) contrast(1.5);">
     </p>
-    <a href="menu.html">
-      <img src="full-menu.png" alt="Our Full Menu" style="width:100%;max-width:600px;border-radius:8px;">
-    </a>
+    <a href="menu.html" style="display:inline-block;margin-top:20px;padding:14px 40px;background:#222;color:#fff;text-decoration:none;font-size:1rem;letter-spacing:2px;text-transform:uppercase;font-family:Georgia,'Times New Roman',serif;">View Our Full Menu</a>
 
   </section>
 
@@ -241,9 +315,9 @@
   </section>
 
   <section id="contact" class="contact">
-    <h2>Find Us</h2>
+    <h2>Pick Up</h2>
     <p>Pittston Road, Spencerville, ON K0E 1X0</p>
-    <p><script type="text/javascript">function decode(a){a=atob(a);return a.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26)})};document.write("<a href=\""+decode("em52eWdiOnZhc2JAbmZiaGVxYmh0dW9ueHJlbC5wYno=")+"\">"+decode("dmFzYkBuZmJoZXFiaHR1b254cmVsLnBieg==")+"</a>");</script></p>
+    <p><script type="text/javascript">function decode(a){a=atob(a);return a.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26)})};document.write("<a href=\""+decode("em52eWdiOnBiYWducGdAbmZiaGVxYmh0dW9ueHJlbC5wYno=")+"\">"+decode("cGJhZ25wZ0BuZmJoZXFiaHR1b254cmVsLnBieg==")+"</a>");</script></p>
 
     <div class="socials">
       <a href="https://instagram.com/as_sourdoughbakery">
@@ -259,5 +333,37 @@
     &copy; 2026 A's Sourdough Bakery &middot; asourdoughbakery.com
   </footer>
 
+  <script>
+    var lbImages = ['maplepecan.jpg','fullloaf.jpg','bread.jpg','cookies.jpg','pizza.jpg','pizzafocaccia.JPG','stand.JPG','focaccia.jpg'];
+    var lbIndex = 0;
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightbox-img');
+
+    function openLightbox(i) {
+      lbIndex = i;
+      lbImg.src = lbImages[lbIndex];
+      lb.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('active');
+    }
+
+    function navLightbox(dir) {
+      lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+      lbImg.src = lbImages[lbIndex];
+    }
+
+    lb.addEventListener('click', function(e) {
+      if (e.target === lb) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    });
+  </script>
 </body>
 </html>
